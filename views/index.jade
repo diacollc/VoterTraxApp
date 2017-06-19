@@ -1,0 +1,27 @@
+﻿extends layout
+block content
+    div.row
+        div.col-md-1
+
+        div.col-md-10(class='pageWrapper')
+            div.row
+                div.col-md-12(class='heading')
+                    | Voter Trax
+            div.row
+                div.col-md-3(style='height:100%; padding-top:50px; text-align:center')
+                    img(src='images/votelogo.png')
+                div.col-md-9(class='bodyblock')
+                    ul(class='nav nav-tabs')
+                      li(role='presentation' class='active')
+                        a(href='/') Home
+                      li(role='presentation')
+                        a(href='/precinct' class='navLink') Precinct Details
+                      li(role='presentation')
+                        a(href='/votermap' class='navLink') Voter Map
+                    div(class='panelBorder')
+                        br
+                        br
+                        | Welcome to VoterTrax! Here you can see the targeted voters for our precinct, their political donation history, and which ones we've spoken to for the upcoming campaign!
+        div.col-md-1
+                
+    

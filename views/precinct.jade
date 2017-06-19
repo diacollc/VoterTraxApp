@@ -1,0 +1,48 @@
+﻿extends layout
+block content
+    script(type="text/javascript", src="/javascripts/detailqueryhandler.js")
+    div.row
+        div.col-md-1
+
+        div.col-md-10(class='pageWrapper')
+            div.row
+                div.col-md-12(class='heading')
+                    | Voter Trax
+            div.row
+                div.col-md-3(style='height:100%; padding-top:50px; text-align:center')
+                    img(src='images/votelogo.png')
+                div.col-md-9(class='bodyblock')
+                    ul(class='nav nav-tabs')
+                      li(role='presentation' )
+                        a(href='/' class='navLink') Home
+                      li(role='presentation' class='active')
+                        a(href='/precinct') Precinct Details
+                      li(role='presentation')
+                        a(href='/votermap' class='navLink') Voter Map
+                    div(class='panelBorder')
+                        br
+                        table#voters(class='table table-hover')
+                            thead
+                                tr
+                                    th
+                                        | Precinct
+                                    th
+                                        | Name
+                                    th
+                                        | Mailing Address
+                                    th
+                                        | Party
+                                    th
+                                        | 
+                            tbody
+                                each voter in voters
+                                    tr
+                                        td= voter.Precinct__r.Name
+                                        td= voter.Name
+                                        td= voter.Mailing_Address__c
+                                        td= voter.Political_Party__c
+                                        td
+                                            button( class='btn btn-default btn-details' value='#{voter.Id}') Details
+
+                        table#voterdetails
+        div.col-md-1

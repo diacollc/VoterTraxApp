@@ -1,0 +1,57 @@
+﻿extends layout
+block content
+    script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true')
+    script(type="text/javascript", src="javascripts/sockethandler.js")
+    script.
+            var map, geocoder;
+            
+            //runs after the page loads
+            function initialize() {
+                    geocoder = new google.maps.Geocoder();
+              
+                    var mapOptions = {
+                        zoom: 14,
+                        center: {lat: 47.569513, lng: -122.003967}
+                    }
+          
+                    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+                    var marker = new google.maps.Marker( { 
+                                map: map,
+                                icon: {
+                                    path: google.maps.SymbolPath.CIRCLE,
+                                    scale: 10 
+                                },
+                                position: {lat: 47.569513, lng: -122.003967}
+                            });
+
+            }
+
+            $(document).ready(function () {
+                initialize();
+            });
+
+    div.row
+        div.col-md-1
+
+        div.col-md-10(class='pageWrapper')
+            div.row
+                div.col-md-12(class='heading')
+                    | Voter Trax
+            div.row
+                div.col-md-3(style='height:100%; padding-top:50px; text-align:center')
+                    img(src='images/votelogo.png')
+                div.col-md-9(class='bodyblock')
+                    ul(class='nav nav-tabs')
+                      li(role='presentation')
+                        a(href='/' class='navLink') Home
+                      li(role='presentation')
+                        a(href='/precinct' class='navLink') Precinct Details
+                      li(role='presentation' class='active')
+                        a(href='/votermap') Voter Map
+                    div(class='panelBorder')
+                        br
+                        div(id='map-canvas', style='border: 1px solid black; height:420px; width:750px')
+                        br
+                        div#status
+        div.col-md-1
